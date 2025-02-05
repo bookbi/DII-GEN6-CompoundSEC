@@ -3,8 +3,9 @@ import javax.swing.*;
         import java.awt.*;
         import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 
-public class AccessSystem extends JFrame {
+public class AccessSystem2 extends JFrame {
     private JTextField userField;
     private JTextField cardField;
     private JButton validateButton;
@@ -12,9 +13,9 @@ public class AccessSystem extends JFrame {
 
     private AuditLog auditLog;
 
-    public AccessSystem() {
+    public AccessSystem2() {
         // เชื่อมต่อฐานข้อมูล
-        DatabaseManager dbManager = new DatabaseManager("access_system.db");
+        DatabaseManager2 dbManager = new DatabaseManager2("access_system.db");
         auditLog = new AuditLog(dbManager);
 
         // ตั้งค่า GUI
@@ -66,8 +67,25 @@ public class AccessSystem extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            AccessSystem accessSystem = new AccessSystem();
+            AccessSystem2 accessSystem = new AccessSystem2();
             accessSystem.setVisible(true);
         });
+    }
+
+    public static class AuditLog {
+        private DatabaseManager2 dbManager;
+
+        public AuditLog(DatabaseManager2 dbManager) {
+            this.dbManager = dbManager;
+        }
+
+        // บันทึกประวัติการใช้งาน
+        public void logAccess(String user, String card, String status) {
+            LocalDateTime now = LocalDateTime.now();
+            String timestamp = now.toString();
+
+            // บันทึกข้อมูลลงฐานข้อมูล
+            dbManager.insertLog(timestamp, user, card, status);
+        }
     }
 }

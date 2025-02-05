@@ -3,14 +3,15 @@ import javax.swing.*;
         import java.awt.*;
         import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 
-public class AuthSystem extends JFrame {
+public class AuthSystem1 extends JFrame {
     private JTextField cardField;
     private JTextField levelField;
     private JButton loginButton;
     private JLabel statusLabel;
 
-    public AuthSystem() {
+    public AuthSystem1() {
         setTitle("Access Control System");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,7 +48,7 @@ public class AuthSystem extends JFrame {
         String cardInput = cardField.getText();
         String levelInput = levelField.getText();
 
-        // จำลอง AccessControl
+        // จำลอง AuthSystem.AccessControl
         AccessControl accessControl = new AccessControl("CARD-10", "Admin");
 
         if (accessControl.validateAccess(cardInput, levelInput)) {
@@ -61,8 +62,26 @@ public class AuthSystem extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            AuthSystem authSystem = new AuthSystem();
+            AuthSystem1 authSystem = new AuthSystem1();
             authSystem.setVisible(true);
         });
+    }
+
+    public static class AccessControl {
+        private String encodedCard;
+        private String accessLevel;
+
+        public AccessControl(String encodedCard, String accessLevel) {
+            this.encodedCard = encodedCard;
+            this.accessLevel = accessLevel;
+        }
+
+        // ตรวจสอบสิทธิ์ของบัตร
+        public boolean validateAccess(String cardInput, String levelInput) {
+            LocalDateTime currentTime = LocalDateTime.now();
+            // จำลองการเข้ารหัส (แค่ตัวอย่าง)
+            String expectedCard = "CARD-" + currentTime.getHour(); // Time-Encoded
+            return cardInput.equals(expectedCard) && levelInput.equals(accessLevel);
+        }
     }
 }

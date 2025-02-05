@@ -1,10 +1,10 @@
 
 import java.sql.*;
 
-public class DatabaseManager {
+public class DatabaseManager2 {
     private Connection connection;
 
-    public DatabaseManager(String dbName) {
+    public DatabaseManager2(String dbName) {
         try {
             // เชื่อมต่อฐานข้อมูล SQLite
             connection = DriverManager.getConnection("jdbc:sqlite:" + dbName);
