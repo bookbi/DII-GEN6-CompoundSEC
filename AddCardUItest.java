@@ -4,7 +4,7 @@ import javax.swing.*;
         import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddCardUI {
+public class AddCardUItest {
     public static void main(String[] args) {
         // Create the main frame
         JFrame frame = new JFrame("Add New Card");
