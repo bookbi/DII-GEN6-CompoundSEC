@@ -5,16 +5,16 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.util.Base64;
 
-public class CardManagementSystem extends JFrame {
-    private CardManager cardManager;
+public class CardManagementSystemTEST extends JFrame {
+    private CardManagerTEST cardManagerTEST;
 
     private JTextField cardIDField;
     private JTextField accessLevelField;
     private JButton addButton, editButton, deleteButton;
     private JTextArea cardListArea;
 
-    public CardManagementSystem() {
-        cardManager = new CardManager();
+    public CardManagementSystemTEST() {
+        cardManagerTEST = new CardManagerTEST();
 
         // ตั้งค่า GUI
         setTitle("Card Management System");
@@ -86,7 +86,7 @@ public class CardManagementSystem extends JFrame {
         String accessLevel = accessLevelField.getText();
 
         if (!cardID.isEmpty() && !accessLevel.isEmpty()) {
-            cardManager.addCard(cardID, accessLevel);
+            cardManagerTEST.addCard(cardID, accessLevel);
             updateCardList();
             clearFields();
         } else {
@@ -99,7 +99,7 @@ public class CardManagementSystem extends JFrame {
         String newAccessLevel = accessLevelField.getText();
 
         if (!cardID.isEmpty() && !newAccessLevel.isEmpty()) {
-            boolean success = cardManager.editCard(cardID, newAccessLevel);
+            boolean success = cardManagerTEST.editCard(cardID, newAccessLevel);
             if (success) {
                 updateCardList();
                 clearFields();
@@ -115,7 +115,7 @@ public class CardManagementSystem extends JFrame {
         String cardID = cardIDField.getText();
 
         if (!cardID.isEmpty()) {
-            boolean success = cardManager.deleteCard(cardID);
+            boolean success = cardManagerTEST.deleteCard(cardID);
             if (success) {
                 updateCardList();
                 clearFields();
@@ -129,7 +129,7 @@ public class CardManagementSystem extends JFrame {
 
     private void updateCardList() {
         StringBuilder listContent = new StringBuilder();
-        for (CardManager.Card card : cardManager.getCards()) {
+        for (CardManagerTEST.Card card : cardManagerTEST.getCards()) {
             String cardID = Encryption.decryptCard(card.getEncryptedID());
             String accessLevel = card.getAccessLevel();
             listContent.append("Card ID: ").append(cardID).append(", Access Level: ").append(accessLevel).append("\n");
@@ -144,7 +144,7 @@ public class CardManagementSystem extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            CardManagementSystem cms = new CardManagementSystem();
+            CardManagementSystemTEST cms = new CardManagementSystemTEST();
             cms.setVisible(true);
         });
     }
