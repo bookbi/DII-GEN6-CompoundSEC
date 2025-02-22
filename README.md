@@ -1,1 +1,1 @@
-![Figma](https://github.com/bookbi/DII-GEN6-CompoundSEC/issues/15)
+![Prototype](https://github.com/bookbi/DII-GEN6-CompoundSEC/issues/15)
