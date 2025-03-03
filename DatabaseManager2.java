@@ -45,4 +45,20 @@ public class DatabaseManager2 {
             e.printStackTrace();
         }
     }
+    // ฟังก์ชันในการอัปเดตสถานะบัตรในฐานข้อมูล
+    public void updateCardStatus(String cardId, String status) {
+        String updateSQL = "UPDATE cards SET status = ? WHERE card_id = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(updateSQL)) {
+            pstmt.setString(1, status);
+            pstmt.setString(2, cardId);
+            pstmt.executeUpdate();
+
+            // บันทึกการเพิกถอนใน audit_log
+            insertLog("Timestamp", "Admin", cardId, "Card " + status);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
