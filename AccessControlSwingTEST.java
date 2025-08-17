@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AccessControlSwing {
+public class AccessControlSwingTEST {
     private static Map<String, String> CARD_DATABASE = new HashMap<>();
     private JFrame frame;
     private JTextField cardInput;
@@ -18,7 +18,7 @@ public class AccessControlSwing {
         CARD_DATABASE.put("67890", "medium");
     }
 
-    public AccessControlSwing() {
+    public AccessControlSwingTEST() {
         frame = new JFrame("Access Control System");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(300, 200);
@@ -55,6 +55,6 @@ public class AccessControlSwing {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new AccessControlSwing());
+        SwingUtilities.invokeLater(() -> new AccessControlSwingTEST());
     }
 }

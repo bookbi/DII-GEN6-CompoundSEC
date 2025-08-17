@@ -5,13 +5,13 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 
-public class AuthSystem1 extends JFrame {
+public class AuthSystem1TEST extends JFrame {
     private JTextField cardField;
     private JTextField levelField;
     private JButton loginButton;
     private JLabel statusLabel;
 
-    public AuthSystem1() {
+    public AuthSystem1TEST() {
         setTitle("Access Control System");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,7 +62,7 @@ public class AuthSystem1 extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            AuthSystem1 authSystem = new AuthSystem1();
+            AuthSystem1TEST authSystem = new AuthSystem1TEST();
             authSystem.setVisible(true);
         });
     }

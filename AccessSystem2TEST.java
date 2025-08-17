@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 
-public class AccessSystem2 extends JFrame {
+public class AccessSystem2TEST extends JFrame {
     private JTextField userField;
     private JTextField cardField;
     private JButton validateButton;
@@ -13,7 +13,7 @@ public class AccessSystem2 extends JFrame {
 
     private AuditLog auditLog;
 
-    public AccessSystem2() {
+    public AccessSystem2TEST() {
         // เชื่อมต่อฐานข้อมูล
         DatabaseManager2 dbManager = new DatabaseManager2("access_system.db");
         auditLog = new AuditLog(dbManager);
@@ -67,7 +67,7 @@ public class AccessSystem2 extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            AccessSystem2 accessSystem = new AccessSystem2();
+            AccessSystem2TEST accessSystem = new AccessSystem2TEST();
             accessSystem.setVisible(true);
         });
     }
